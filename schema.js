@@ -28,7 +28,12 @@ function addEntryToHours(data){
     xhr.send(data_json);
 }
 
+function getUserInput(){
+    
+}
+
 // Make it usable standalone or as a library
 if (typeof require != 'undefined' && require.main==module) {
+    const readline = require('readline');
     addEntryToHours();
 }
