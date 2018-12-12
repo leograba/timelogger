@@ -27,3 +27,8 @@ function addEntryToHours(data){
     xhr.setRequestHeader('Content-Type','application/json');
     xhr.send(data_json);
 }
+
+// Make it usable standalone or as a library
+if (typeof require != 'undefined' && require.main==module) {
+    addEntryToHours();
+}
