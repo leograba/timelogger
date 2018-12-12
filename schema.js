@@ -1,3 +1,5 @@
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 function addEntryToHours(data){
     // Expect data in the following format
     /*var data = {
@@ -8,7 +10,6 @@ function addEntryToHours(data){
     }*/
 
     // Create object
-    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var xhr = new XMLHttpRequest();
 
     // Constants
