@@ -18,6 +18,6 @@ xhr.onreadystatechange = function() {
 }
 
 // Send request
-xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+xhr.setRequestHeader('Content-Type','application/json');
 xhr.open("POST", url, true);
 xhr.send(data);
