@@ -9,6 +9,7 @@ var data = {
     "product": "GRCost99",
     "quantity": 4.5
 }
+var data_json = JSON.stringify(data);
 
 // Action
 xhr.onreadystatechange = function() {
@@ -20,4 +21,4 @@ xhr.onreadystatechange = function() {
 // Send request
 xhr.open("POST", url, true);
 xhr.setRequestHeader('Content-Type','application/json');
-xhr.send(data);
+xhr.send(data_json);
