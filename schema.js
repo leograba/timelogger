@@ -1,4 +1,5 @@
 // Create object
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 
 // Constants
