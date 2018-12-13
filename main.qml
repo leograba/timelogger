@@ -1,9 +1,23 @@
 import QtQuick 2.9
-import QtQuick.Window 2.2
 
-Window {
+import QtQuick.Controls 2.4
+import QtQuick.Controls.Material 2.4
+
+ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
+    width: 450
+    height: 150
+
+    minimumWidth: 430
+    minimumHeight: 150
+
+    maximumWidth: 800
+    maximumHeight: 150
+
+    title: qsTr("Working Hours Logger")
+
+    Ui{
+        width: parent.width
+        height: parent.height
+    }
 }
