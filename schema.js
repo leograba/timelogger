@@ -58,5 +58,8 @@ function getUserInput(callback){
 
 // Make it usable standalone or as a library
 if (typeof require != 'undefined' && require.main==module) {
-    addEntryToHours();
+    getUserInput((err, data) => {
+        if (err) throw new Error("An error occurred getting user input");
+        addEntryToHours(data);
+    });
 }
