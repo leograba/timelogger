@@ -1,4 +1,5 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const readline = require('readline');
 const cfg = require("./config.json");
 
 function addEntryToHours(data){
@@ -30,12 +31,32 @@ function addEntryToHours(data){
     xhr.send(data_json);
 }
 
-function getUserInput(){
+function getUserInput(callback){
+    /* Get user input from STDIN and pass resulting object to callback
+    already in the format expected by MS Flow.
+
+    No input validation is performed. */
+
+    var user_input = { "product": "GRCost99"};
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
     
+    rl.question('Enter Analytic Account: ', (answer) => {
+        user_input.analytic_account = answer;
+        rl.question('Enter Description: ', (answer) => {
+            user_input.description = answer;
+            rl.question('Enter hours worked: ', (answer) => {
+                user_input.quantity = answer;
+                rl.close();
+                return callback(null, user_input)
+            });
+        });
+    });
 }
 
 // Make it usable standalone or as a library
 if (typeof require != 'undefined' && require.main==module) {
-    const readline = require('readline');
     addEntryToHours();
 }
