@@ -1,0 +1,15 @@
+{
+  "name": "msflow_log_hours",
+  "version": "1.0.0",
+  "description": "Log working hours to google sheet using Microsoft Flow",
+  "main": "schema.js",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leonardo Graboski Veiga",
+  "license": "GPL-3.0"
+}
