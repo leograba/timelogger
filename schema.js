@@ -47,19 +47,27 @@ function getUserInput(callback){
         user_input.analytic_account = answer;
         rl.question('Enter Description: ', (answer) => {
             user_input.description = answer;
-            rl.question('Enter hours worked: ', (answer) => {
-                user_input.quantity = answer;
-                rl.close();
-                return callback(null, user_input)
-            });
+            rl.close();
+            return callback(null, user_input);
         });
     });
+}
+
+function getTimeMSFlow(callback){
+    /* Get time in format HH.mm being hours from 0 to 23 */
+    var d = new Date();
+    dt = d.getHours() + "." + d.getMinutes();
+    return callback(null, dt);
 }
 
 // Make it usable standalone or as a library
 if (typeof require != 'undefined' && require.main==module) {
     getUserInput((err, data) => {
         if (err) throw new Error("An error occurred getting user input");
-        addEntryToHours(data);
+        getTimeMSFlow((err, dt) => {
+            if (err) throw new Error("An error occurred retrieving time now");
+            data.quantity = dt;
+            addEntryToHours(data);
+        });
     });
 }
