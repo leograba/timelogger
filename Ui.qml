@@ -102,10 +102,45 @@ Pane {
         id: submit
         width: parent.width - row.width - anchors.leftMargin
         height: parent.height
-        text: "Log!"
+        text: qsTr("Log!");
         flat: true
         anchors.leftMargin: 10
         anchors.left: row.right
+
+        onClicked: {
+            in_progress.running = true
+
+            var url = JSON.parse(cfg.configString)["msflow_url"];
+            var xhr = new XMLHttpRequest();
+            var data_json = JSON.stringify({
+                description: description.text,
+                analytic_account: analytic_account.text,
+                quantity: quantity.text
+            });
+
+            // Action
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    sbmt_timer.start()
+                }
+            }
+
+            // Send request
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send(data_json);
+        }
+
+        Timer {
+            id: sbmt_timer
+            onTriggered: in_progress.running = false
+        }
+
+        BusyIndicator {
+            id: in_progress
+            anchors.fill: parent
+            running: false
+        }
     }
 
 }
