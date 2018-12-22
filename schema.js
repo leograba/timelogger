@@ -20,7 +20,7 @@ function addEntryToHours(data){
 
     // Action
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
             console.log(JSON.parse(xhr.responseText));
         }
     }
