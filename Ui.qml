@@ -3,10 +3,16 @@ import QtQuick 2.9
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Material 2.4
 
+import leo.readjson 1.0
+
 Pane {
     property real label: 0.2
     property int row_height: 40
     Material.theme: Material.Dark
+
+    ReadJson{
+        id:cfg
+    }
 
     Column {
         id: row
@@ -103,20 +109,3 @@ Pane {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/
