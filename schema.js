@@ -56,7 +56,7 @@ function getUserInput(callback){
 function getTimeMSFlow(callback){
     /* Get time in format HH.mm being hours from 0 to 23 */
     var d = new Date();
-    dt = d.getHours() + "." + d.getMinutes();
+    var dt = d.getHours() + "." + d.getMinutes();
     return callback(null, dt);
 }
 
