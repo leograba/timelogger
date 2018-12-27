@@ -71,31 +71,6 @@ Pane {
                 font.pixelSize: 12
             }
         }
-
-        Rectangle{
-            color: "transparent"
-            height: row_height
-            width: parent.width
-
-            Label {
-                id: qty_label
-                width: label * parent.width
-                height: parent.height
-                text: qsTr("Hours")
-                bottomPadding: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            TextField {
-                id: quantity
-                width: (parent.width - qty_label.width)
-                height: parent.height
-                anchors.left: qty_label.right
-                placeholderText: qsTr("e.g. 4.5 means 4 hours and 30 minutes")
-                font.pixelSize: 12
-            }
-        }
     }
 
     Button{
@@ -112,10 +87,12 @@ Pane {
 
             var url = JSON.parse(cfg.configString)["msflow_url"];
             var xhr = new XMLHttpRequest();
+            var d = new Date();
+            var dt = d.getHours() + "." + d.getMinutes();
             var data_json = JSON.stringify({
                 description: description.text,
                 analytic_account: analytic_account.text,
-                quantity: quantity.text
+                quantity: dt
             });
 
             // Action
